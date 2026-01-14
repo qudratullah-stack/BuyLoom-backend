@@ -6,7 +6,7 @@ import routercategory from './src/routes/categoryRouter.js';
 import cors from 'cors'
 dbconnect()
 
-const port = process.env.PORT || 9000
+const port = process.env.PORT
 const app = express();
 app.use(cors())
 app.use(express.json())
