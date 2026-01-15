@@ -1,20 +1,20 @@
 import SignupUser from "../Model/UserSchema.js";
 import bcrypt from "bcrypt";
 import dotenv from 'dotenv'
+dotenv.config()
 import nodemailer from 'nodemailer'
 import jwt from 'jsonwebtoken'
-dotenv.config()
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false, 
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
- 
-  connectionTimeout: 10000, 
-  greetingTimeout: 10000,
+  tls: {
+    rejectUnauthorized: false 
+  }
 });
 export const signupcontroller = async (req, res) => {
   try {
